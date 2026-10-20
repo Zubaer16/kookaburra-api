@@ -23,6 +23,18 @@ describe('Phase 02 API smoke tests (no real database)', () => {
     })
     expect(response.headers['x-request-id']).toMatch(/^[0-9a-f-]{36}$/)
   })
+  it('lists Swagger modules in the intended order', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/docs-json')
+      .expect(200)
+    expect(
+      response.body.tags?.map((tag: { name: string }) => tag.name),
+    ).toEqual([
+      'System / Health',
+      'Authentication / Customer',
+      'Authentication / Admin',
+    ])
+  })
   it('keeps commerce endpoints unavailable until Phase 03/04', async () => {
     await request(app.getHttpServer()).get('/v1/products').expect(404)
   })

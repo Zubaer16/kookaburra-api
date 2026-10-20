@@ -73,7 +73,7 @@ export async function createHttpApp(): Promise<INestApplication> {
     SwaggerModule.setup('docs', app, document, {
       swaggerOptions: {
         persistAuthorization: false,
-        tagsSorter: 'alpha',
+        // Keep Swagger tags in DocumentBuilder.addTag order (Health first).
         operationsSorter: 'alpha',
       },
     })

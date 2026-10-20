@@ -9,3 +9,12 @@ coverage/
 .DS_Store
 .vercel/
 src/generated/prisma/
+
+# Playwright API test artifacts
+playwright-api-report/
+test-results-api/
+!.env.api-test.example
+
+# Headed Swagger visual test artifacts
+playwright-swagger-report/
+test-results-swagger/
